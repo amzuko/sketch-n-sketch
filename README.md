@@ -301,35 +301,33 @@ To add a new example to the dropdown menu:
 
 ## Running Tests
 
-If you hack on Sketch-n-Sketch, there are some tests to run. Writing more tests is, of course, encouraged.
+If you hack on Sketch-n-Sketch, there are some tests to run. Writing more tests and verifying that your changes do not break existing tests is encouraged.
 
 Run once:
-
 ```
-$ ./tests/test.sh
-```
-
-Run when files change (requires [fswatch](https://emcrisostomo.github.io/fswatch/)):
-
-```
-$ ./watchtest
+$ npm install -g elm-test
 ```
 
-To run only tests with a certain string in their name, set `SNS_TESTS_FILTER`:
+This installs [elm-test](http://package.elm-lang.org/packages/elm-community/elm-test/latest), a standard elm unit-testing framework.
+
+To run the tests, run:
+```
+$ elm-test
+```
+
+Run when tests files change:
 
 ```
-$ SNS_TESTS_FILTER=unparser ./watchtest
+$ elm-test --watch
 ```
 
-To write a new test, make a function of type `() -> String` named `somethingTest` in a `tests/myTests.elm` file. If the function returns the string `"ok"` it is considered a passing test, otherwise the returned string will be displayed as a failure message.
+For other options when running tests, consult the elm-test docs, or consider installing a different test runner (such as [lobo](https://github.com/benansell/lobo).)
 
-You can also return a list of test functions, `() -> List (() -> String)`, and each test will be run individually.
-
-See [existing tests](https://github.com/ravichugh/sketch-n-sketch/tree/master/tests) for examples.
+To write a new test, inspect the contents of tests/, or consult tutorials on using [elm-test](https://medium.com/@_rchaves_/testing-in-elm-93ad05ee1832#.458hkzko8).
 
 ### Adding/Removing Elm Packages
 
-If you add or remove a package from the project, the package list for the tests needs to be updated as well. Simply run `node tests/refresh_elm-packages.js` to copy over the main `elm-packages.json` into the tests directory.
+If you add or remove a package from the project, the package list for the tests needs to be updated as well. Please add the appropriate dependency to tests/elm-package.json.
 
 [Prelude]: https://github.com/ravichugh/sketch-n-sketch/blob/master/examples/prelude.little
 [LangSvg]: https://github.com/ravichugh/sketch-n-sketch/blob/master/src/LangSvg.elm
