@@ -2,13 +2,13 @@ module Tests exposing (..)
 
 import Test exposing (..)
 
-
+import CallStackExcessionTests exposing (all)
 import SimplifyTests exposing (all)
 
 all : Test
 all =
     describe "Sample Test Suite"
         [ 
-        SimplifyTests.all
-        
+            CallStackExcessionTests.all,
+            SimplifyTests.all
         ]

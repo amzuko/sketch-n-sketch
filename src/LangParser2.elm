@@ -18,7 +18,7 @@ import PreludeGenerated as Prelude
 
 ------------------------------------------------------------------------------
 
-(prelude, initK) = freshenClean 1 <| U.fromOkay "parse prelude" <| parseE_ identity Prelude.src
+(prelude, initK) = freshenClean 1 <| U.fromOkay "parse prelude" <| parseE_ identity "(let dummyPreludeMain ['svg' [] []] dummyPreludeMain)"
 
 preludeIds = allIds prelude
 
